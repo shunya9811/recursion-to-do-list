@@ -21,38 +21,33 @@
     <body>
 
         <div class='container mt-5' id="app">
-
-            <div class="input-group mb-3 w-50">
-                <input type="text" class="form-control" placeholder="write a task" aria-label="Recipient's username" aria-describedby="button-addon" v-model="title">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon" v-bind:disabled="btnDisaled" v-on:click="createTask">Create</button>
+            <div class="input-group mb-3 w-25 col-4">
+                <input type="text" class="form-control" placeholder="write a theme" aria-label="Recipient's username" aria-describedby="button-addon" v-model="theme">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon" v-bind:disabled="addToDoListbtnDisaled" v-on:click="createToDoList">Create</button>
             </div>
-            
-            <div v-for="(task, index) in toDoList">
-                <div class="card w-25 my-1">
-                    <div class="card-body d-flex justify-content-between">
-                        <div class="d-flex flex-column">
-                            <h3 class="card-title">TODO {{index+1}} : {{task.title}}</h3>
-                            <h5>{{task.date}}</h5>
-                        </div>                
-                        <a href="#" class="btn btn-primary mt-2 text-center" v-on:click="deleteTask(index)">Delete</a>
+            <div class="d-flex table-responsive">
+                <div class="w-50" v-for="(todolist, i) in toDoLists">
+                    <div class="px-2">
+                        <h1>Theme{{i+1}} : {{todolist.theme}}</h1>
+                        <div class="input-group mb-3 w-100">
+                            <input type="text" class="form-control" placeholder="write a task" aria-label="Recipient's username" aria-describedby="button-addon" v-model="title[i]">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon" v-bind:disabled="addTaskbtnDisaled(i)" v-on:click="createTask(i)">Create</button>
+                        </div>
+                        
+                        <div v-for="(task, j) in toDoLists[i].tasks">
+                            <div class="card w-100 my-1">
+                                <div class="card-body d-flex justify-content-between">
+                                    <div class="d-flex flex-column">
+                                        <h3 class="card-title">TODO {{j+1}} : {{task.title}}</h3>
+                                        <h5>{{task.date}}</h5>
+                                    </div>                
+                                    <a href="#" class="btn btn-primary mt-2 text-center" v-on:click="deleteTask(i, j)">Delete</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!--
-            <div class="card w-50 my-1">
-                <div class="card-body">
-                    <h5 class="card-title">TODO 2 : Do my homework</h5>
-                    <a href="#" class="btn btn-primary mt-2">Delete</a>
-                </div>
-            </div>
-
-            <div class="card w-50 my-1">
-                <div class="card-body">
-                    <h5 class="card-title">TODO 3 : Get a haircut</h5>
-                    <a href="#" class="btn btn-primary mt-2">Delete</a>
-                </div>
-            </div>
-            -->
         </div>
         <script src="./main.js"></script>
     </body>
