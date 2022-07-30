@@ -27,11 +27,14 @@
                 <button class="btn btn-outline-secondary" type="button" id="button-addon" v-bind:disabled="btnDisaled" v-on:click="createTask">Create</button>
             </div>
             
-            <div v-for="(task,index) in toDoList">
-                <div class="card w-50 my-1">
-                    <div class="card-body">
-                        <h5 class="card-title">TODO {{index+1}} : {{task.title}}</h5>
-                        <a href="#" class="btn btn-primary mt-2" v-on:click="deleteTask(index)">Delete</a>
+            <div v-for="(task, index) in toDoList">
+                <div class="card w-25 my-1">
+                    <div class="card-body d-flex justify-content-between">
+                        <div class="d-flex flex-column">
+                            <h3 class="card-title">TODO {{index+1}} : {{task.title}}</h3>
+                            <h5>{{task.date}}</h5>
+                        </div>                
+                        <a href="#" class="btn btn-primary mt-2 text-center" v-on:click="deleteTask(index)">Delete</a>
                     </div>
                 </div>
             </div>
