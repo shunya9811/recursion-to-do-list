@@ -6,7 +6,6 @@ class Task{
 }
 
 class TodoList{
-    
     constructor(theme, tasks){
         this.theme = theme;
         this.tasks = tasks;
